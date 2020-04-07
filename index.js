@@ -32,18 +32,26 @@ function checkswitch(button){
             console.log(button)
     }
 }
+function buttonAnimation(keyValue){
+    var selectedButton = document.querySelector("." + keyValue);
+    selectedButton.classList.add("pressed");
+    setTimeout(() => {
+        selectedButton.classList.remove("pressed")
+    },100);
+}
+
 for(let i = 0; i < document.querySelectorAll(".drum").length ; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
         const button = this.innerHTML;
         const audio = new Audio();
         checkswitch(button);
+        buttonAnimation(button);
     })
 }
 document.addEventListener("keydown",(event) =>{
     checkswitch(event.key);
+    buttonAnimation(event.key);
 });
 
 
 
-// const audio = new Audio("sounds/tom-1.mp3");
-//         audio.play();
